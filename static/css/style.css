@@ -1,0 +1,199 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Segoe UI', 'Inter', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: radial-gradient(circle at top right, #f0f7ff, #e6f0ff),
+        linear-gradient(135deg, #e9f0f7 0%, #f9fbfd 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: gradientShift 12s ease infinite alternate;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    width: 100%;
+    max-width: 480px;
+    padding: 40px 35px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(79, 70, 229, 0.15),
+        0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transform: translateY(0);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 70px rgba(79, 70, 229, 0.25);
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: #6b7280;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+form {
+    margin-top: 25px;
+}
+
+.file-container {
+    position: relative;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 16px;
+    border: 2px dashed #c7d2fe;
+    border-radius: 12px;
+    background: #f8faff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 15px;
+}
+
+input[type="file"]:hover {
+    background: #edf2ff;
+    border-color: #a5b4fc;
+}
+
+input[type="file"]::file-selector-button {
+    background: linear-gradient(to right, #4f46e5, #6366f1);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 12px;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+button:hover::before {
+    width: 100%;
+}
+
+button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(79, 70, 229, 0.4);
+}
+
+#result {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 12px;
+    background: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+    color: #1e293b;
+    font-size: 16px;
+    border-left: 4px solid #4f46e5;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.5s forwards 0.3s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.confidence {
+    font-weight: 700;
+    color: #10b981;
+    font-size: 17px;
+}
+
+.footer {
+    margin-top: 30px;
+    font-size: 13px;
+    color: #9ca3af;
+    opacity: 0.8;
+}
+
+/* Loading animation */
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}
+
+.loading {
+    animation: pulse 1.5s infinite;
+}
